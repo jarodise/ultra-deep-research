@@ -112,6 +112,14 @@ Validation Gate
 - Load [template](./templates/report_template.md) only for Phase 8
 - Do not inline everything - reference external files
 
+**Anti-Hallucination Protocol (CRITICAL):**
+- **Source grounding**: Every factual claim MUST cite a specific source immediately [N]
+- **Clear boundaries**: Distinguish between FACTS (from sources) and SYNTHESIS (your analysis)
+- **Explicit markers**: Use "According to [1]..." or "[1] reports..." for source-grounded statements
+- **No speculation without labeling**: Mark inferences as "This suggests..." not "Research shows..."
+- **Verify before citing**: If unsure whether source actually says X, do NOT fabricate citation
+- **When uncertain**: Say "No sources found for X" rather than inventing references
+
 ---
 
 ### 4. Verify (Always Execute)
@@ -214,11 +222,28 @@ All files use same base name for easy matching:
 - DO NOT write summaries - write FULL analysis
 
 **Writing Standards:**
-- Precision: Every word deliberately chosen, carries intention
-- Economy: No fluff, eliminate fancy grammar, unnecessary modifiers
-- Clarity: Exact numbers ("23% reduction"), not vague ("significant improvement")
-- Directness: State findings without embellishment
-- High signal-to-noise: Dense information, respect reader's time
+- **Precision**: Every word deliberately chosen, carries intention
+- **Economy**: No fluff, eliminate fancy grammar, unnecessary modifiers
+- **Clarity**: Exact numbers ("23% reduction"), not vague ("significant improvement")
+- **Directness**: State findings without embellishment
+- **High signal-to-noise**: Dense information, respect reader's time
+
+**Source Attribution Standards (Critical for Preventing Fabrication):**
+- **Immediate citation**: Every factual claim followed by [N] citation in same sentence
+- **Quote sources directly**: Use "According to [1]..." or "[1] reports..." for factual statements
+- **Distinguish fact from synthesis**:
+  - ✅ GOOD: "Mortality decreased 23% (p<0.01) in the treatment group [1]."
+  - ❌ BAD: "Studies show mortality improved significantly."
+- **No vague attributions**:
+  - ❌ NEVER: "Research suggests...", "Studies show...", "Experts believe..."
+  - ✅ ALWAYS: "Smith et al. (2024) found..." [1], "According to FDA data..." [2]
+- **Label speculation explicitly**:
+  - ✅ GOOD: "This suggests a potential mechanism..." (analysis, not fact)
+  - ❌ BAD: "The mechanism is..." (presented as fact without citation)
+- **Admit uncertainty**:
+  - ✅ GOOD: "No sources found addressing X directly."
+  - ❌ BAD: Fabricating a citation to fill the gap
+- **Template pattern**: "[Specific claim with numbers/data] [Citation]. [Analysis/implication]."
 
 **Deliver to user:**
 1. Executive summary (inline in chat)

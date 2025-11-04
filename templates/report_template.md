@@ -14,6 +14,16 @@
 <!-- Examples: "reduced mortality 23%" not "significantly improved outcomes" -->
 <!-- Examples: "5 RCTs (n=1,847)" not "several studies suggest" -->
 
+<!-- SOURCE ATTRIBUTION (CRITICAL - PREVENTS FABRICATION): -->
+<!-- EVERY factual claim MUST be followed by [N] citation in same sentence -->
+<!-- Use "According to [1]..." or "[1] reports..." for factual statements -->
+<!-- DISTINGUISH fact from synthesis: -->
+<!--   ✅ GOOD: "Mortality decreased 23% (p<0.01) in treatment group [1]." -->
+<!--   ❌ BAD: "Studies show mortality improved significantly." -->
+<!-- NO vague attributions like "research suggests" or "experts believe" -->
+<!-- ADMIT uncertainty: "No sources found for X" not fabricated citations -->
+<!-- LABEL speculation: "This suggests..." not "Research shows..." -->
+
 ## Executive Summary
 
 [Write 3-5 bullet points, 50-250 words total]
