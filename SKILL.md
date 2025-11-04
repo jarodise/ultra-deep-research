@@ -116,13 +116,31 @@ Validation Gate
 
 ### 4. Verify (Always Execute)
 
+**Step 1: Citation Verification (Catches Fabricated Sources)**
+
+```bash
+python scripts/verify_citations.py --report [path]
+```
+
+**Checks:**
+- DOI resolution (verifies citation actually exists)
+- Title/year matching (detects mismatched metadata)
+- Flags suspicious entries (2024+ without DOI, no URL, failed verification)
+
+**If suspicious citations found:**
+- Review flagged entries manually
+- Remove or replace fabricated sources
+- Re-run until clean
+
+**Step 2: Structure & Quality Validation**
+
 ```bash
 python scripts/validate_report.py --report [path]
 ```
 
 **8 automated checks:**
 1. Executive summary length (50-250 words)
-2. Required sections present
+2. Required sections present (+ recommended: Claims table, Counterevidence)
 3. Citations formatted [1], [2], [3]
 4. Bibliography matches citations
 5. No placeholder text (TBD, TODO)
