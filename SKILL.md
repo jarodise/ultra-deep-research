@@ -235,12 +235,17 @@ mkdir -p ~/Documents/[folder_name]
    - Mechanisms/Data → Data tables with navy headers
    - Recommendations → Compact info boxes with numbered lists
 4. Replace placeholders: {{TITLE}}, {{DATE}}, {{MODE}}, {{SOURCE_COUNT}}, {{CREDIBILITY}}, {{METRICS_DASHBOARD}}, {{CONTENT}}, {{BIBLIOGRAPHY}}
-5. **Professional Footer (Critical for Shareability):**
-   - Use sans-serif font (Helvetica Neue) - NO italic, NO serif
-   - Simple format: "Research Report | Date | Analysis Type | Word Count"
-   - Include minimal disclaimer text
-   - **NEVER include:** file paths, filenames, internal metrics, agent names, quality scores
-   - Keep footer minimal and client-ready
+5. **Minimal Footer (Critical):**
+   - **DEFAULT:** Page numbers only: "Page X of Y"
+   - **IF DATE REQUESTED:** "Date | Page X of Y"
+   - Sans-serif font (Helvetica Neue), 10-11px, gray color
+   - **NEVER include:**
+     - ❌ Disclaimers (unsolicited, not needed)
+     - ❌ Word counts (unnecessary)
+     - ❌ Report type/analysis type (obvious from content)
+     - ❌ File paths, filenames, internal metrics
+     - ❌ "For informational purposes" or any legal text
+   - Keep absolute minimum - just pagination
 6. Save to: `[folder]/research_report_[YYYYMMDD]_[slug].html`
 7. Open in browser: `open [html_path]`
 
