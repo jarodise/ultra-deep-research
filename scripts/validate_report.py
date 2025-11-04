@@ -91,6 +91,12 @@ class ReportValidator:
             "Methodology"
         ]
 
+        # Recommended sections (warnings if missing, not errors)
+        recommended = [
+            "Counterevidence Register",
+            "Claims-Evidence Table"
+        ]
+
         missing = []
         for section in required:
             if not re.search(rf'##.*{section}', self.content, re.IGNORECASE):
@@ -99,6 +105,15 @@ class ReportValidator:
         if missing:
             self.errors.append(f"Missing sections: {', '.join(missing)}")
             return False
+
+        # Check recommended sections (warnings only)
+        missing_recommended = []
+        for section in recommended:
+            if not re.search(rf'##.*{section}', self.content, re.IGNORECASE):
+                missing_recommended.append(section)
+
+        if missing_recommended:
+            self.warnings.append(f"Missing recommended sections (for academic rigor): {', '.join(missing_recommended)}")
 
         return True
 

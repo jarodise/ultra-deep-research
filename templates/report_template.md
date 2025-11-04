@@ -159,6 +159,20 @@
 
 <!-- Be honest and comprehensive about what's uncertain -->
 
+### Counterevidence Register
+
+<!-- Document findings that contradict or challenge main conclusions -->
+
+[2-3 paragraphs explaining contradictory evidence found during research]
+
+**Contradictory Finding 1:** [Description]
+- Source: [Citation]
+- Why it contradicts: [Explanation]
+- How resolved/interpreted: [Your analysis]
+- Impact on conclusions: [Minimal/Moderate/Significant]
+
+**Contradictory Finding 2:** [Continue...]
+
 ### Known Gaps
 
 [2-3 paragraphs explaining:]
@@ -297,6 +311,22 @@
 - Validation checks performed
 - Issues found and corrected
 - Final quality metrics
+
+### Claims-Evidence Table
+
+<!-- Explicit mapping of major claims to supporting sources -->
+
+| Claim ID | Major Claim | Evidence Type | Supporting Sources | Confidence |
+|----------|-------------|---------------|-------------------|------------|
+| C1 | [First major claim from findings] | [Primary data / Meta-analysis / Expert opinion] | [1], [2], [3] | High / Medium / Low |
+| C2 | [Second major claim] | [Evidence type] | [4], [5], [6] | High / Medium / Low |
+| C3 | [Third major claim] | [Evidence type] | [7], [8] | High / Medium / Low |
+| ... | [Continue for all major claims] | ... | ... | ... |
+
+**Confidence Levels:**
+- **High**: 3+ independent sources, consistent findings, strong methodology
+- **Medium**: 2 sources OR single high-quality source with minor contradictions
+- **Low**: Single source OR significant contradictions in evidence
 
 ---
 
