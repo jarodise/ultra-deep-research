@@ -51,19 +51,19 @@ Validation Gate
 
 ## Workflow (Clarify → Plan → Act → Verify → Report)
 
-**AUTONOMY PRINCIPLE:** This skill operates independently. Proceed with reasonable assumptions. Only stop for critical errors or genuinely incomprehensible queries.
+**AUTONOMY PRINCIPLE:** This skill operates independently. Infer assumptions from query context. Only stop for critical errors or incomprehensible queries.
 
 ### 1. Clarify (Rarely Needed - Prefer Autonomy)
 
-**DEFAULT: Proceed autonomously. Make reasonable assumptions based on query context.**
+**DEFAULT: Proceed autonomously. Derive assumptions from query signals.**
 
 **ONLY ask if CRITICALLY ambiguous:**
-- Query is genuinely incomprehensible (e.g., "research the thing")
+- Query is incomprehensible (e.g., "research the thing")
 - Contradictory requirements (e.g., "quick 50-source ultradeep analysis")
 
-**When in doubt: PROCEED with standard mode. User can redirect if needed.**
+**When in doubt: PROCEED with standard mode. User will redirect if incorrect.**
 
-**Good autonomous assumptions:**
+**Default assumptions:**
 - Technical query → Assume technical audience
 - Comparison query → Assume balanced perspective needed
 - Trend query → Assume recent 1-2 years unless specified
@@ -79,10 +79,10 @@ Validation Gate
 - **Deep** (10-20 min): Important decisions, need thorough verification
 - **UltraDeep** (20-45 min): Critical analysis, maximum rigor
 
-**Announce plan (then proceed immediately):**
+**Announce plan and execute:**
 - Briefly state: selected mode, estimated time, number of sources
 - Example: "Starting standard mode research (5-10 min, 15-30 sources)"
-- NO need to wait for approval - proceed directly to execution
+- Proceed without waiting for approval
 
 ---
 
@@ -93,12 +93,12 @@ Validation Gate
 - Phase 3: RETRIEVE - Gather 15-30 sources, spawn parallel agents
 - Phase 8: PACKAGE - Generate report using [template](./templates/report_template.md)
 
-**Standard+ adds:**
+**Standard/Deep/UltraDeep execute:**
 - Phase 2: PLAN - Strategy formulation
 - Phase 4: TRIANGULATE - Verify 3+ sources per claim
 - Phase 5: SYNTHESIZE - Generate novel insights
 
-**Deep+ adds:**
+**Deep/UltraDeep execute:**
 - Phase 6: CRITIQUE - Red-team analysis
 - Phase 7: REFINE - Address gaps
 
@@ -110,7 +110,7 @@ Validation Gate
 **Progressive Context Loading:**
 - Load [methodology](./reference/methodology.md) sections on-demand
 - Load [template](./templates/report_template.md) only for Phase 8
-- Don't inline everything - use references
+- Do not inline everything - reference external files
 
 ---
 
@@ -171,12 +171,7 @@ python scripts/validate_report.py --report [path]
 1. Executive summary (inline in chat)
 2. Confirmation that full report saved with file path
 3. Source quality assessment summary
-4. Next steps (optional)
-
-**Offer:**
-- Deep-dive any section
-- Follow-up questions
-- Alternative formats
+4. Next steps (if relevant)
 
 ---
 
@@ -226,12 +221,12 @@ python scripts/validate_report.py --report [path]
 
 **Stop immediately if:**
 - 2 validation failures on same error → Pause, report, ask user
-- <5 sources after exhaustive search → Report limitation, ask to proceed
+- <5 sources after exhaustive search → Report limitation, request direction
 - User interrupts/changes scope → Confirm new direction
 
 **Graceful degradation:**
 - 5-10 sources → Note in limitations, proceed with extra verification
-- Time constraint hit → Package partial results, document gaps
+- Time constraint reached → Package partial results, document gaps
 - High-priority critique issue → Address immediately
 
 **Error format:**
@@ -259,7 +254,7 @@ Every report must:
 - Methodology documented
 - No placeholders
 
-**When uncertain:** Be thorough, not fast. Quality > speed.
+**Priority:** Thoroughness over speed. Quality > speed.
 
 ---
 
@@ -275,9 +270,9 @@ Every report must:
 - Output format
 
 **Assumptions:**
-- User wants verified, citation-backed info
+- User requires verified, citation-backed information
 - 10-50 sources available on topic
-- Extended reasoning acceptable (5-45 min)
+- Time investment: 5-45 minutes
 
 ---
 
@@ -321,7 +316,7 @@ Every report must:
 - [Quick Start](./QUICK_START.md) - Fast reference
 - [Competitive Analysis](./COMPETITIVE_ANALYSIS.md) - vs OpenAI/Gemini
 
-**Context Management:** Load these files only when explicitly needed for current phase. Do not preload all content.
+**Context Management:** Load files on-demand for current phase only. Do not preload all content.
 
 ---
 
