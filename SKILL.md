@@ -254,29 +254,29 @@ All files use same base name for easy matching:
 
 **Deliver to user:**
 1. Executive summary (inline in chat)
-2. Organized folder path (e.g., "📁 All files saved to: ~/Documents/Psilocybin_Research_20251104/")
+2. Organized folder path (e.g., "All files saved to: ~/Documents/Psilocybin_Research_20251104/")
 3. Confirmation of all three formats generated:
-   - ✅ Markdown (source)
-   - ✅ HTML (McKinsey-style, opened in browser)
-   - ✅ PDF (professional print, opened in viewer)
-4. Source quality assessment summary (credibility score, source count)
+   - Markdown (source)
+   - HTML (McKinsey-style, opened in browser)
+   - PDF (professional print, opened in viewer)
+4. Source quality assessment summary (source count)
 5. Next steps (if relevant)
 
 **Generation Workflow (Execute in Order):**
 
-**Step 1: Create Folder**
+**Create Folder**
 ```bash
 # Extract topic slug from research question
 # Create folder: ~/Documents/[TopicName]_Research_[YYYYMMDD]/
 mkdir -p ~/Documents/[folder_name]
 ```
 
-**Step 2: Generate Markdown**
+**Generate Markdown**
 - Write comprehensive report using [template](./templates/report_template.md)
 - Save to: `[folder]/research_report_[YYYYMMDD]_[slug].md`
 - Also save copy to: `~/.claude/research_output/` (internal tracking)
 
-**Step 3: Generate HTML (McKinsey Style)**
+**Generate HTML (McKinsey Style)**
 1. Read McKinsey template from `./templates/mckinsey_report_template.html`
 2. Extract 3-4 key quantitative metrics from findings for dashboard
 3. Convert FULL markdown to HTML (use Python script for proper conversion):
@@ -302,7 +302,7 @@ mkdir -p ~/Documents/[folder_name]
 6. Save to: `[folder]/research_report_[YYYYMMDD]_[slug].html`
 7. Open in browser: `open [html_path]`
 
-**Step 4: Generate PDF**
+**Generate PDF**
 1. Use Task tool with general-purpose agent
 2. Invoke generating-pdf skill with markdown as input
 3. Save to: `[folder]/research_report_[YYYYMMDD]_[slug].pdf`
@@ -315,7 +315,7 @@ mkdir -p ~/Documents/[folder_name]
 **Format:** Comprehensive markdown report following [template](./templates/report_template.md) EXACTLY
 
 **Required sections (all must be detailed):**
-- Executive Summary (3-5 bullets, 50-250 words)
+- Executive Summary (2-3 concise paragraphs, 50-250 words)
 - Introduction (2-3 paragraphs: question, scope, methodology, assumptions)
 - Main Analysis (4-8 findings, each 300-500 words with citations [1], [2], [3])
 - Synthesis & Insights (500-1000 words: patterns, novel insights, implications)
