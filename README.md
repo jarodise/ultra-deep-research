@@ -9,8 +9,9 @@ A comprehensive research engine that brings Claude Desktop's Advanced Research c
 - **Multiple Research Modes**: Quick, Standard, Deep, and UltraDeep
 - **Graph-of-Thoughts Reasoning**: Non-linear exploration with branching thought paths
 
-### 2025 Enhancements (Latest - v2.1)
-- **📄 Progressive File Assembly (NEW)**: **UNLIMITED report length** (4K, 10K, 20K, 50K+ words) via section-by-section generation
+### 2025 Enhancements (Latest - v2.2)
+- **🔄 Auto-Continuation System (NEW)**: **TRUE UNLIMITED length** (50K, 100K+ words) via recursive agent spawning with context preservation
+- **📄 Progressive File Assembly**: Section-by-section generation with quality safeguards
 - **⚡ Parallel Search Execution**: 5-10 concurrent searches + parallel agents (3-5x faster Phase 3)
 - **🎯 First Finish Search (FFS) Pattern**: Adaptive completion based on quality thresholds
 - **🔍 Enhanced Citation Validation (CiteGuard)**: Hallucination detection, URL verification, multi-source cross-checking
@@ -84,33 +85,70 @@ Each report includes:
 - Full Bibliography
 - Methodology Appendix
 
-### Large Report Generation (2025 Progressive Assembly)
+### Unlimited Report Generation (2025 Auto-Continuation System)
 
-Reports are generated using **progressive file assembly** - each section is written to file individually, managing Claude Code's output token limits effectively:
+Reports use **progressive file assembly with auto-continuation** - achieving truly unlimited length through recursive agent spawning:
 
-**Per-Run Limits (Claude Code 32K token limit):**
-- **Quick mode**: 2,000-4,000 words ✅
-- **Standard mode**: 4,000-8,000 words ✅
-- **Deep mode**: 8,000-15,000 words ✅
-- **UltraDeep mode**: 15,000-20,000 words per run ⚠️ (at limit)
+**How It Works:**
 
-**For reports >20,000 words:**
-Run the skill multiple times with different focus areas:
-- Run 1: "deep-research on X focusing on aspects A, B, C"
-- Run 2: "deep-research on X focusing on aspects D, E, F"
-- Combine outputs manually or ask Claude to merge files
+1. **Initial Generation (18K words)**
+   - Generate sections 1-10 progressively
+   - Each section written to file immediately (stays under 32K limit per agent)
+   - Save continuation state with research context
 
-**How it works:**
-1. Each section (Executive Summary, Introduction, Finding 1, etc.) is generated individually
-2. Sections written to file immediately using Write/Edit tools (each ≤2,000 words)
-3. Citations tracked continuously across all sections
-4. Final report assembled from all sections with complete bibliography
-5. Total output stays under 32K token limit (≈20,000 words max)
+2. **Auto-Continuation (if needed)**
+   - Automatically spawns continuation agent via Task tool
+   - Continuation agent loads state: themes, narrative arc, citations, quality metrics
+   - Generates next batch of sections (another 18K words)
+   - Updates state and spawns next agent if more sections remain
+
+3. **Recursive Chaining**
+   - Each agent stays under 32K output token limit
+   - Chain continues until all sections complete
+   - Final agent generates bibliography and validates report
+
+**Realistic Report Sizes:**
+- **Quick mode**: 2,000-4,000 words (single run) ✅
+- **Standard mode**: 4,000-8,000 words (single run) ✅
+- **Deep mode**: 8,000-15,000 words (single run) ✅
+- **UltraDeep mode**: 20,000-100,000+ words (auto-continuation) ✅
+
+**Example: 50,000 word report:**
+- Agent 1: Sections 1-10 (18K words) → Spawns Agent 2
+- Agent 2: Sections 11-20 (18K words) → Spawns Agent 3
+- Agent 3: Sections 21-25 + Bibliography (14K words) → Complete!
+- Total: 50K words across 3 agents, each under 32K limit
+
+**Context Preservation (Quality Safeguards):**
+
+Continuation state includes:
+- ✅ Research question and key themes
+- ✅ Main findings summaries (100 words each)
+- ✅ Narrative arc position (beginning/middle/end)
+- ✅ Quality metrics (avg words, citation density, prose ratio)
+- ✅ All citations used + bibliography entries
+- ✅ Writing style characteristics
+
+Each continuation agent:
+- Reads last 3 sections to understand flow
+- Maintains established themes and style
+- Continues citation numbering correctly
+- Matches quality metrics (±20% tolerance)
+- Verifies coherence before each section
+
+**Quality Gates (Per Section):**
+- [ ] Word count: Within ±20% of average
+- [ ] Citation density: Matches established rate
+- [ ] Prose ratio: ≥80% prose (not bullets)
+- [ ] Theme alignment: Ties to key themes
+- [ ] Style consistency: Matches established patterns
 
 **Benefits:**
-- ✅ Respects Claude Code output limits while maximizing length
-- ✅ Maintains quality throughout (no cognitive fatigue)
-- ✅ Each section gets focused generation attention
+- ✅ TRUE unlimited length (50K, 100K+ words achievable)
+- ✅ Fully automatic (no manual intervention)
+- ✅ Context preserved across continuations
+- ✅ Quality maintained throughout
+- ✅ Each agent stays under 32K token limit
 - ✅ Progressive assembly prevents truncation
 
 ## Examples
