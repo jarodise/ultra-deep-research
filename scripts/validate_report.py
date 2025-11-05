@@ -144,7 +144,7 @@ class ReportValidator:
         return True
 
     def _check_bibliography(self) -> bool:
-        """Check bibliography exists and matches citations"""
+        """Check bibliography exists, matches citations, and has no truncation placeholders"""
         pattern = r'## Bibliography(.*?)(?=##|\Z)'
         match = re.search(pattern, self.content, re.DOTALL | re.IGNORECASE)
 
@@ -154,12 +154,39 @@ class ReportValidator:
 
         bib_section = match.group(1)
 
+        # CRITICAL: Check for truncation placeholders (2025 CiteGuard enhancement)
+        truncation_patterns = [
+            (r'\[\d+-\d+\]', 'Citation range (e.g., [8-75])'),
+            (r'Additional.*citations', 'Phrase "Additional citations"'),
+            (r'would be included', 'Phrase "would be included"'),
+            (r'\[\.\.\.continue', 'Pattern "[...continue"'),
+            (r'\[Continue with', 'Pattern "[Continue with"'),
+            (r'etc\.(?!\w)', 'Standalone "etc."'),
+            (r'and so on', 'Phrase "and so on"'),
+        ]
+
+        for pattern_re, description in truncation_patterns:
+            if re.search(pattern_re, bib_section, re.IGNORECASE):
+                self.errors.append(f"⚠️ CRITICAL: Bibliography contains truncation placeholder: {description}")
+                self.errors.append(f"   This makes the report UNUSABLE - complete bibliography required")
+                return False
+
         # Count bibliography entries [1], [2], etc.
         bib_entries = re.findall(r'^\[(\d+)\]', bib_section, re.MULTILINE)
 
         if not bib_entries:
             self.errors.append("Bibliography has no entries")
             return False
+
+        # Check citation number continuity (no gaps)
+        bib_nums = sorted([int(n) for n in bib_entries])
+        if bib_nums:
+            expected = list(range(1, bib_nums[-1] + 1))
+            actual = bib_nums
+            missing = [n for n in expected if n not in actual]
+            if missing:
+                self.errors.append(f"Bibliography has gaps in numbering: missing {missing}")
+                return False
 
         # Find citations in text
         text_citations = set(re.findall(r'\[(\d+)\]', self.content))

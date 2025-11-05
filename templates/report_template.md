@@ -257,18 +257,22 @@
 
 ## Bibliography
 
-<!-- Full citations with enough detail to find sources -->
-<!-- Format: [N] Author/Organization (Year). "Title". Publication. URL (Retrieved: Date) -->
+<!-- ============================================================================ -->
+<!-- CRITICAL: Generate COMPLETE bibliography with ALL sources cited in report   -->
+<!-- DO NOT use placeholders like "[8-75] Additional citations" or "etc."        -->
+<!-- DO NOT use "...continue..." or "[Continue with all sources...]"             -->
+<!-- EVERY citation [N] in report body MUST have corresponding entry here        -->
+<!-- If report cites [1]-[25], bibliography MUST contain all 25 complete entries -->
+<!-- Format: [N] Author/Organization (Year). "Title". Publication. URL           -->
+<!-- ============================================================================ -->
 
 [1] Author Name or Organization (2025). "Full Title of Article or Paper". Publication Name or Website. https://full-url.com (Retrieved: 2025-11-04)
 
 [2] Second Author (2024). "Second Article Title". Journal Name, Volume(Issue), pages. https://doi-or-url.com (Retrieved: 2025-11-04)
 
-[3] [Continue with all sources cited in report...]
-
-[4] [Ensure every citation number [N] in the body has a corresponding entry here]
-
-[...continue through all sources, typically 15-30 entries...]
+<!-- Add ALL remaining citations [3] through [N] here -->
+<!-- Standard reports: 15-30 sources | Deep/UltraDeep: 30-50 sources -->
+<!-- Write each entry completely - NO ranges, NO "etc.", NO placeholders -->
 
 ---
 

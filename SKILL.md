@@ -315,12 +315,20 @@ mkdir -p ~/Documents/[folder_name]
 **Generate HTML (McKinsey Style)**
 1. Read McKinsey template from `./templates/mckinsey_report_template.html`
 2. Extract 3-4 key quantitative metrics from findings for dashboard
-3. Convert FULL markdown to HTML (use Python script for proper conversion):
-   - Convert ALL sections including bibliography
-   - Bibliography entries: format each [N] citation as separate `<div class="bib-entry">` with hanging indent
-   - URLs in bibliography: make clickable with `<a href="..." target="_blank">`
+3. Convert markdown to HTML in TWO parts (use Python script for proper conversion):
+
+   **Part A: {{CONTENT}} - Sections 1-6 + Appendix (NOT Bibliography):**
+   - Executive Summary → Synthesis & Insights → Limitations → Recommendations → Appendix: Methodology
    - Headers: ## → `<h2 class="section-title">`, ### → `<h3 class="subsection-title">`
-   - **Citations with Attribution Gradients:** Convert [N] to interactive tooltips:
+
+   **Part B: {{BIBLIOGRAPHY}} - Section 7 only (separate from content):**
+   - Extract "## Bibliography" section from markdown
+   - Format each [N] citation as separate `<div class="bib-entry">` with hanging indent
+   - URLs: make clickable with `<a href="..." target="_blank">`
+   - DO NOT include Bibliography in {{CONTENT}} - it goes in {{BIBLIOGRAPHY}} placeholder only
+
+   **Formatting rules for both parts:**
+   - **Citations with Attribution Gradients (in {{CONTENT}} only):** Convert [N] to interactive tooltips:
      ```html
      <span class="citation">[N]
        <span class="citation-tooltip">
@@ -335,7 +343,16 @@ mkdir -p ~/Documents/[folder_name]
      ```
    - Lists: convert markdown bullets to `<ul><li>` properly
    - Paragraphs: wrap non-HTML lines in `<p>` tags
-4. Replace placeholders: {{TITLE}}, {{DATE}}, {{MODE}}, {{SOURCE_COUNT}}, {{CREDIBILITY}}, {{METRICS_DASHBOARD}}, {{CONTENT}}, {{BIBLIOGRAPHY}}
+
+4. Replace placeholders in template:
+   - {{TITLE}} - Report title
+   - {{DATE}} - Generation date
+   - {{MODE}} - Research mode (Quick/Standard/Deep/UltraDeep)
+   - {{SOURCE_COUNT}} - Number of sources
+   - {{CREDIBILITY}} - Average credibility score
+   - {{METRICS_DASHBOARD}} - Metrics HTML from step 2
+   - {{CONTENT}} - Sections 1-6 + Appendix (from Part A above)
+   - {{BIBLIOGRAPHY}} - Bibliography HTML only (from Part B above)
 5. **Minimal Footer (Critical):**
    - **DEFAULT:** Page numbers only: "Page X of Y"
    - **IF DATE REQUESTED:** "Date | Page X of Y"
@@ -369,8 +386,18 @@ mkdir -p ~/Documents/[folder_name]
 - Synthesis & Insights (500-1000 words: patterns, novel insights, implications)
 - Limitations & Caveats (2-3 paragraphs: gaps, assumptions, uncertainties)
 - Recommendations (3-5 immediate actions, 3-5 next steps, 3-5 further research)
-- Bibliography (15-30 full citations with URLs)
+- **Bibliography (CRITICAL - see rules below)**
 - Methodology Appendix (2-3 paragraphs: process, sources, verification)
+
+**Bibliography Requirements (ZERO TOLERANCE - Report is UNUSABLE without complete bibliography):**
+- ✅ MUST include EVERY citation [N] used in report body (if report has [1]-[50], write all 50 entries)
+- ✅ Format: [N] Author/Org (Year). "Title". Publication. URL (Retrieved: Date)
+- ✅ Each entry on its own line, complete with all metadata
+- ❌ NO placeholders: NEVER use "[8-75] Additional citations", "...continue...", "etc.", "[Continue with sources...]"
+- ❌ NO ranges: Write [3], [4], [5]... individually, NOT "[3-50]"
+- ❌ NO truncation: If 30 sources cited, write all 30 entries in full
+- ⚠️ Validation WILL FAIL if bibliography contains placeholders or missing citations
+- ⚠️ Report is GARBAGE without complete bibliography - no way to verify claims
 
 **Strictly Prohibited:**
 - Placeholder text (TBD, TODO, [citation needed])
