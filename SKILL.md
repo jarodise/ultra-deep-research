@@ -204,25 +204,25 @@ python scripts/validate_report.py --report [path]
 
 **File Organization (CRITICAL - Clean Accessibility):**
 
-**1. Create Organized Folder in Documents:**
-- ALWAYS create dedicated folder: `~/Documents/[TopicName]_Research_[YYYYMMDD]/`
+**1. Create Organized Folder in Active Workspace:**
+- ALWAYS create dedicated folder in the current active workspace: `./[TopicName]_Research_[YYYYMMDD]/`
 - Extract clean topic name from research question (remove special chars, use underscores/CamelCase)
 - Examples:
-  - "psilocybin research 2025" → `~/Documents/Psilocybin_Research_20251104/`
-  - "compare React vs Vue" → `~/Documents/React_vs_Vue_Research_20251104/`
-  - "AI safety trends" → `~/Documents/AI_Safety_Trends_Research_20251104/`
+  - "psilocybin research 2025" → `./Psilocybin_Research_20251104/`
+  - "compare React vs Vue" → `./React_vs_Vue_Research_20251104/`
+  - "AI safety trends" → `./AI_Safety_Trends_Research_20251104/`
 - If folder exists, use it; if not, create it
 - This ensures clean organization and easy accessibility
 
 **2. Save All Formats to Same Folder:**
 
 **Markdown (Primary Source):**
-- Save to: `[Documents folder]/research_report_[YYYYMMDD]_[topic_slug].md`
+- Save to: `[Folder in workspace]/research_report_[YYYYMMDD]_[topic_slug].md`
 - Also save copy to: `~/.claude/research_output/` (internal tracking)
 - Full detailed report with all findings
 
 **HTML (McKinsey Style - ALWAYS GENERATE):**
-- Save to: `[Documents folder]/research_report_[YYYYMMDD]_[topic_slug].html`
+- Save to: `[Folder in workspace]/research_report_[YYYYMMDD]_[topic_slug].html`
 - Use McKinsey template: [mckinsey_template](./templates/mckinsey_report_template.html)
 - Design principles: Sharp corners (NO border-radius), muted corporate colors (navy #003d5c, gray #f8f9fa), ultra-compact layout, info-first structure
 - Place critical metrics dashboard at top (extract 3-4 key quantitative findings)
@@ -232,7 +232,7 @@ python scripts/validate_report.py --report [path]
 - OPEN in browser automatically after generation
 
 **PDF (Professional Print - ALWAYS GENERATE):**
-- Save to: `[Documents folder]/research_report_[YYYYMMDD]_[topic_slug].pdf`
+- Save to: `[Folder in workspace]/research_report_[YYYYMMDD]_[topic_slug].pdf`
 - Use generating-pdf skill (via Task tool with general-purpose agent)
 - Professional formatting with headers, page numbers
 - OPEN in default PDF viewer after generation
@@ -305,7 +305,7 @@ Before considering a section complete, verify:
 
 **Deliver to user:**
 1. Executive summary (inline in chat)
-2. Organized folder path (e.g., "All files saved to: ~/Documents/Psilocybin_Research_20251104/")
+2. Organized folder path (e.g., "All files saved to: ./Psilocybin_Research_20251104/")
 3. Confirmation of all three formats generated:
    - Markdown (source)
    - HTML (McKinsey-style, opened in browser)
@@ -318,8 +318,8 @@ Before considering a section complete, verify:
 **Phase 8.1: Setup**
 ```bash
 # Extract topic slug from research question
-# Create folder: ~/Documents/[TopicName]_Research_[YYYYMMDD]/
-mkdir -p ~/Documents/[folder_name]
+# Create folder: ./[TopicName]_Research_[YYYYMMDD]/
+mkdir -p ./[folder_name]
 
 # Create initial markdown file with frontmatter
 # File path: [folder]/research_report_[YYYYMMDD]_[slug].md
